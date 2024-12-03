@@ -17,6 +17,7 @@ defmodule Adventofcode24.DayOne do
     Enum.to_list(0..(length(first_sorted) - 1))
     |> Enum.map(fn x -> abs(Enum.at(first_sorted, x) - Enum.at(second_sorted, x)) end)
     |> Enum.sum()
+    |> IO.inspect()
   end
 
   def run2() do
@@ -35,5 +36,6 @@ defmodule Adventofcode24.DayOne do
     first_sorted
     |> Enum.map(fn x -> Enum.filter(second_sorted, fn y -> y == x end) |> length() |> Kernel.*(x) end)
     |> Enum.sum()
+    |> IO.inspect()
   end
 end

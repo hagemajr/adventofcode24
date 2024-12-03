@@ -13,13 +13,15 @@ defmodule Adventofcode24 do
 
   """
   alias Adventofcode24.DayOne
+  alias Adventofcode24.DayTwo
 
   def run() do
+    IO.puts("~~~Day 1~~~")
     DayOne.run()
-    |> IO.puts()
-
     DayOne.run2()
-    |> IO.puts()
+    IO.puts("\n")
+    IO.puts("~~~Day 2~~~")
+    DayTwo.run()
   end
 end
 
