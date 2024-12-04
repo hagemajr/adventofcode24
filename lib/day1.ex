@@ -1,12 +1,10 @@
 defmodule Adventofcode24.DayOne do
-  @data_path Path.expand("data", File.cwd!())
+
+  alias Adventofcode24.Helpers
 
   def run() do
     {first, second} =
-      @data_path
-      |> Path.join("day1.txt")
-      |> File.read!()
-      |> String.split("\n")
+      Helpers.read_lines("day1.txt")
       |> Enum.map(&String.split(&1, "   "))
       |> Enum.map(fn [a, b] -> {String.to_integer(a), String.to_integer(b)} end)
       |> Enum.unzip()
@@ -22,10 +20,7 @@ defmodule Adventofcode24.DayOne do
 
   def run2() do
     {first, second} =
-      @data_path
-      |> Path.join("day1.txt")
-      |> File.read!()
-      |> String.split("\n")
+      Helpers.read_lines("day1.txt")
       |> Enum.map(&String.split(&1, "   "))
       |> Enum.map(fn [a, b] -> {String.to_integer(a), String.to_integer(b)} end)
       |> Enum.unzip()

@@ -1,11 +1,9 @@
 defmodule Adventofcode24.DayTwo do
-  @data_path Path.expand("data", File.cwd!())
+
+  alias Adventofcode24.Helpers
 
   def run() do
-    reports = @data_path
-      |> Path.join("day2.txt")
-      |> File.read!()
-      |> String.split("\n")
+    reports = Helpers.read_lines("day2.txt")
 
     first_pass_results = for report <- reports, do: handle(report)
     first_pass_results = Enum.filter(first_pass_results, fn x -> x != nil end)

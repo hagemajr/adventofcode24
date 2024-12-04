@@ -14,6 +14,7 @@ defmodule Adventofcode24 do
   """
   alias Adventofcode24.DayOne
   alias Adventofcode24.DayTwo
+  alias Adventofcode24.DayThree
 
   def run() do
     IO.puts("~~~Day 1~~~")
@@ -22,6 +23,11 @@ defmodule Adventofcode24 do
     IO.puts("\n")
     IO.puts("~~~Day 2~~~")
     DayTwo.run()
+    IO.puts("\n")
+    IO.puts("~~~Day 3~~~")
+    DayThree.run()
+    DayThree.run2()
+    IO.puts("\n")
   end
 end
 
