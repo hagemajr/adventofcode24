@@ -1,5 +1,4 @@
 defmodule Adventofcode24.DayOne do
-
   alias Adventofcode24.Helpers
 
   def run() do
@@ -29,7 +28,9 @@ defmodule Adventofcode24.DayOne do
     second_sorted = Enum.sort(second, :asc)
 
     first_sorted
-    |> Enum.map(fn x -> Enum.filter(second_sorted, fn y -> y == x end) |> length() |> Kernel.*(x) end)
+    |> Enum.map(fn x ->
+      Enum.filter(second_sorted, fn y -> y == x end) |> length() |> Kernel.*(x)
+    end)
     |> Enum.sum()
     |> IO.inspect()
   end

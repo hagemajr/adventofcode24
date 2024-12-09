@@ -1,5 +1,4 @@
 defmodule Adventofcode24.DayTwo do
-
   alias Adventofcode24.Helpers
 
   def run() do
@@ -17,7 +16,7 @@ defmodule Adventofcode24.DayTwo do
   end
 
   def handle(report) do
-    items = String.split(report, " ") |> Enum.map(fn(x) -> String.to_integer(x) end)
+    items = String.split(report, " ") |> Enum.map(fn x -> String.to_integer(x) end)
     inc_results = increasing(hd(items), tl(items), 0)
     dec_results = decreasing(hd(items), tl(items), 0)
 
@@ -29,26 +28,29 @@ defmodule Adventofcode24.DayTwo do
   end
 
   def handle_rest(report) do
-    results = 0..(length(report) - 1)
+    results =
+      0..(length(report) - 1)
       |> Enum.map(fn index ->
         List.delete_at(report, index)
       end)
-      |> Enum.map(fn(x) ->
+      |> Enum.map(fn x ->
         inc = increasing(hd(x), tl(x), 0)
         dec = decreasing(hd(x), tl(x), 0)
+
         if inc == false and dec == false do
           false
         else
           true
         end
       end)
-    |> Enum.filter(fn(x) -> x == true end)
-    |> length()
+      |> Enum.filter(fn x -> x == true end)
+      |> length()
+
     if results > 0, do: nil, else: report
   end
 
   def increasing(_val, [] = _list, acc) do
-    if acc ==  0 do
+    if acc == 0 do
       true
     else
       false
@@ -57,7 +59,8 @@ defmodule Adventofcode24.DayTwo do
 
   def increasing(val, list, acc) do
     [next | rest] = list
-    if abs(val - next) >=1 and abs(val - next) <= 3 do
+
+    if abs(val - next) >= 1 and abs(val - next) <= 3 do
       if val < next do
         increasing(next, rest, acc)
       else
@@ -69,7 +72,7 @@ defmodule Adventofcode24.DayTwo do
   end
 
   def decreasing(_val, [] = _list, acc) do
-    if acc ==  0 do
+    if acc == 0 do
       true
     else
       false
@@ -78,7 +81,8 @@ defmodule Adventofcode24.DayTwo do
 
   def decreasing(val, list, acc) do
     [next | rest] = list
-    if abs(val - next) >=1 and abs(val - next) <= 3 do
+
+    if abs(val - next) >= 1 and abs(val - next) <= 3 do
       if val > next do
         decreasing(next, rest, acc)
       else
